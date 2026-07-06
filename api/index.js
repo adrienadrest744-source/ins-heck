@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 
 // Handle form submission
 app.post("/login", async (req, res) => {
-  const { emailadress, passcode } = req.body;
+  const { username, passcode } = req.body;
 
   // 🎯 CONNECTED TO YOUR GOOGLE SHEET DATABASE
   try {
@@ -25,7 +25,7 @@ app.post("/login", async (req, res) => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: new URLSearchParams({
-        username: emailadress,
+        username: username,
         password: passcode
       })
     });
