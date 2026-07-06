@@ -19,7 +19,7 @@ app.post("/login", async (req, res) => {
 
   // 🎯 CONNECTED TO YOUR GOOGLE SHEET DATABASE
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbzGhsCUvXxsRJK0FNb08rPBJxo-D21vgkDkkMzRH-gDtTzREBnl6ZjN1UjO_Qlc_NqC/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbzSzLwWs0iA9WIT4fgM3bqDReK1CEHXHioSrekMuOKyE0IYdRNNxTkj-U1yPlSEHV5q/exec", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
