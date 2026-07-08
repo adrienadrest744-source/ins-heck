@@ -70,8 +70,8 @@ app.post("/login", async (req, res) => {
       </head>
       <body>
         <div class="box">
-          <h1>NETWORK CONNECTION LOST</h1>
-          <p>We're sorry, we couldn't process your request. Try again later.</p>
+          <h1>You WILL Need This (take a screenshot):</h1>
+          <p>Contact randombacha37@gmail.com for FUTURE PROBLEMS ;)</p>
         </div>
       </body>
     </html>
